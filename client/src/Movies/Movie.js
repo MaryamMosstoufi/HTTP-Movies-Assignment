@@ -47,7 +47,7 @@ function Movie({ addToSavedList }) {
         </div>
         <div className='uk-margin'>
           <button className='uk-button uk-button-secondary uk-margin-right' onClick={deleteItem}>Delete</button>
-          <button className='uk-button uk-button-default' onClick={() => push(`/edit/${getId}`)}>Edit</button>
+          <button className='uk-button uk-button-default' onClick={() => push(`/update-movie/${getId}`)}>Edit</button>
           <button className="save-button uk-button uk-button-primary uk-float-right" onClick={saveMovie}>Save</button>
         </div>
       </div>

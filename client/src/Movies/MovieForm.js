@@ -27,12 +27,17 @@ const MovieForm = () => {
     setMovie({ ...movie, [e.target.name]: e.target.value });
   };
 
+  const handleChangeStars = e => {
+    setMovie({ ...movie, [e.target.name]: [e.target.value] });
+    console.log(movie.stars)
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     axios
       .put(`http://localhost:5000/api/movies/${id}`, movie)
       .then(res => {
-        console.log({res});
+        console.log('handleSumbmit',res);
         push('/');
       })
       .catch(err => console.log(err));
@@ -43,7 +48,7 @@ const MovieForm = () => {
       <div className='uk-container uk-flex uk-flex-center'>
         <form onSubmit={handleSubmit} className='uk-width-large uk-card uk-card-secondary uk-card-body'>
           <div className='uk-margin'>
-            <label for='title'>Title</label>
+            <label htmlFor='title'>Title</label>
             <input
               className='uk-input'
               id='title'
@@ -55,7 +60,7 @@ const MovieForm = () => {
             />
           </div>
           <div className='uk-margin'>
-            <label for='director'>Director</label>
+            <label htmlFor='director'>Director</label>
             <input
               className='uk-input'
               id='director'
@@ -67,7 +72,7 @@ const MovieForm = () => {
             />
           </div>
           <div className='uk-margin'>
-            <label for='metascore'>Metascore</label>
+            <label htmlFor='metascore'>Metascore</label>
             <input
               className='uk-input'
               id='metascore'
@@ -78,17 +83,17 @@ const MovieForm = () => {
               value={movie.metascore}
             />
           </div>
-          {/* <div className='uk-margin'>
+          <div className='uk-margin'>
             <input
               className='uk-input'
               id='stars'
               type='text'
               name='stars'
               placeholder='Stars'
-              onChange={handleChange}
+              onChange={handleChangeStars}
               value={movie.stars}
             />
-          </div> */}
+          </div>
 
           <button className='uk-margin uk-button uk-button-secondary uk-width-1-1'>Update Movie</button>
         </form>
