@@ -84,6 +84,7 @@ const MovieForm = () => {
             />
           </div>
           <div className='uk-margin'>
+            <label htmlFor='stars'>Stars</label>
             <input
               className='uk-input'
               id='stars'
